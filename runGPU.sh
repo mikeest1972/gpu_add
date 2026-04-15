@@ -1,3 +1,3 @@
-nvcc add2.cu -o build/add2_cuda
-chmod +x build/add2_cuda
-./build/add2_cuda
+nvcc add5.cu -o build/add5_cuda
+chmod +x build/add5_cuda
+./build/add5_cuda
