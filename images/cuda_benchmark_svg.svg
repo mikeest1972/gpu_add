@@ -1,0 +1,106 @@
+<svg width="100%" viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">CUDA vector addition benchmark</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Bar chart showing execution time across 5 experiments on an RTX 3060, from 99.7ms (1 thread) down to 0.044ms (memory prefetch), a 2,256x speedup. Dual GPU experiment regressed to 0.11ms due to coordination overhead.</desc>
+
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#A32D2D" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <!-- background transparent, title row -->
+  <text x="40" y="36" font-family="system-ui,sans-serif" font-size="16" font-weight="500" fill="#111" style="fill:rgb(17, 17, 17);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:500;text-anchor:start;dominant-baseline:auto">CUDA kernel execution time — RTX 3060</text>
+  <text x="40" y="56" font-family="system-ui,sans-serif" font-size="12" fill="#888" style="fill:rgb(136, 136, 136);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:12px;font-weight:400;text-anchor:start;dominant-baseline:auto">Log scale · Vector addition benchmark · github.com/mikeest1972/gpu_add</text>
+
+  <!-- chart area: x=100..640, y=80..360 -->
+
+  <!-- horizontal grid lines + y-axis labels (log scale: 100, 10, 1, 0.1, 0.01) -->
+  <!-- map: log10(100)=2 → y=80, log10(0.01)=-2 → y=360. range=4, px=280 -->
+  <!-- y(v) = 360 - (log10(v)+2)/4 * 280 -->
+  <!-- 100ms → y=80 -->
+  <line x1="100" y1="80" x2="640" y2="80" stroke="#e0e0e0" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(224, 224, 224);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="94" y="84" font-family="system-ui,sans-serif" font-size="11" fill="#999" text-anchor="end" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:end;dominant-baseline:auto">100ms</text>
+
+  <!-- 10ms → y=150 -->
+  <line x1="100" y1="150" x2="640" y2="150" stroke="#e0e0e0" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(224, 224, 224);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="94" y="154" font-family="system-ui,sans-serif" font-size="11" fill="#999" text-anchor="end" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:end;dominant-baseline:auto">10ms</text>
+
+  <!-- 1ms → y=220 -->
+  <line x1="100" y1="220" x2="640" y2="220" stroke="#e0e0e0" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(224, 224, 224);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="94" y="224" font-family="system-ui,sans-serif" font-size="11" fill="#999" text-anchor="end" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:end;dominant-baseline:auto">1ms</text>
+
+  <!-- 0.1ms → y=290 -->
+  <line x1="100" y1="290" x2="640" y2="290" stroke="#e0e0e0" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(224, 224, 224);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="94" y="294" font-family="system-ui,sans-serif" font-size="11" fill="#999" text-anchor="end" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:end;dominant-baseline:auto">0.1ms</text>
+
+  <!-- 0.01ms → y=360 -->
+  <line x1="100" y1="360" x2="640" y2="360" stroke="#e0e0e0" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(224, 224, 224);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="94" y="364" font-family="system-ui,sans-serif" font-size="11" fill="#999" text-anchor="end" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:end;dominant-baseline:auto">0.01ms</text>
+
+  <!-- x axis baseline -->
+  <line x1="100" y1="360" x2="640" y2="360" stroke="#ccc" stroke-width="1" style="fill:rgb(0, 0, 0);stroke:rgb(204, 204, 204);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- bar width=72, gap=36, 5 bars, total=5*72+4*36=504, start x=100+(540-504)/2=118 -->
+  <!-- bar spacing: each bar center at 118+36, 118+36+108, ... step=108 -->
+  <!-- centers: 154, 262, 370, 478, 586 -->
+  <!-- bar x = center-36 -->
+
+  <!-- Exp1: 99.726ms → log10=1.999 → y_top = 360-(1.999+2)/4*280 = 360-280.07 ≈ 80 -->
+  <rect x="118" y="81" width="72" height="279" fill="#378ADD" rx="3" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="154" y="75" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#185FA5" text-anchor="middle" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">99.7ms</text>
+
+  <!-- Exp2: 2.7ms → log10=0.431 → y_top = 360-(0.431+2)/4*280 = 360-170.2 = 189.8 ≈ 190 -->
+  <rect x="226" y="190" width="72" height="170" fill="#378ADD" rx="3" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="262" y="184" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#185FA5" text-anchor="middle" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">2.7ms</text>
+
+  <!-- Exp3: 2.1ms → log10=0.322 → y_top = 360-(0.322+2)/4*280 = 360-162.5 = 197.5 ≈ 198 -->
+  <rect x="334" y="198" width="72" height="162" fill="#378ADD" rx="3" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="370" y="192" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#185FA5" text-anchor="middle" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">2.1ms</text>
+
+  <!-- Exp4: 0.044ms → log10=-1.357 → y_top = 360-(-1.357+2)/4*280 = 360-45.0 = 315 -->
+  <rect x="442" y="315" width="72" height="45" fill="#1D9E75" rx="3" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="478" y="309" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#0F6E56" text-anchor="middle" style="fill:rgb(15, 110, 86);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">0.044ms</text>
+
+  <!-- Exp5: 0.11ms → log10=-0.959 → y_top = 360-(-0.959+2)/4*280 = 360-72.9 = 287 -->
+  <rect x="550" y="287" width="72" height="73" fill="url(#hatch)" rx="3" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="550" y="287" width="72" height="73" fill="#E24B4A" opacity="0.25" rx="3" style="fill:rgb(226, 75, 74);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="550" y="287" width="72" height="73" fill="none" stroke="#A32D2D" stroke-width="1" rx="3" style="fill:none;stroke:rgb(163, 45, 45);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="586" y="281" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#A32D2D" text-anchor="middle" style="fill:rgb(163, 45, 45);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">0.11ms</text>
+
+  <!-- x-axis labels -->
+  <text x="154" y="378" font-family="system-ui,sans-serif" font-size="11" fill="#555" text-anchor="middle" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">1 thread</text>
+  <text x="154" y="391" font-family="system-ui,sans-serif" font-size="10" fill="#999" text-anchor="middle" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">exp 1</text>
+
+  <text x="262" y="378" font-family="system-ui,sans-serif" font-size="11" fill="#555" text-anchor="middle" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">256 threads</text>
+  <text x="262" y="391" font-family="system-ui,sans-serif" font-size="10" fill="#999" text-anchor="middle" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">exp 2</text>
+
+  <text x="370" y="378" font-family="system-ui,sans-serif" font-size="11" fill="#555" text-anchor="middle" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">3,584 cores</text>
+  <text x="370" y="391" font-family="system-ui,sans-serif" font-size="10" fill="#999" text-anchor="middle" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">exp 3</text>
+
+  <text x="478" y="378" font-family="system-ui,sans-serif" font-size="11" fill="#555" text-anchor="middle" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">+ mem prefetch</text>
+  <text x="478" y="391" font-family="system-ui,sans-serif" font-size="10" fill="#999" text-anchor="middle" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">exp 4</text>
+
+  <text x="586" y="378" font-family="system-ui,sans-serif" font-size="11" fill="#A32D2D" text-anchor="middle" style="fill:rgb(163, 45, 45);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">2× GPU</text>
+  <text x="586" y="391" font-family="system-ui,sans-serif" font-size="10" fill="#999" text-anchor="middle" style="fill:rgb(153, 153, 153);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">exp 5</text>
+
+  <!-- speedup badge on exp4 -->
+  <rect x="428" y="258" width="100" height="20" rx="10" fill="#1D9E75" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="478" y="272" font-family="system-ui,sans-serif" font-size="11" font-weight="500" fill="#E1F5EE" text-anchor="middle" style="fill:rgb(225, 245, 238);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">2,256× faster</text>
+
+  <!-- regression annotation exp5 -->
+  <text x="586" y="253" font-family="system-ui,sans-serif" font-size="10" fill="#A32D2D" text-anchor="middle" style="fill:rgb(163, 45, 45);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">coord</text>
+  <text x="586" y="265" font-family="system-ui,sans-serif" font-size="10" fill="#A32D2D" text-anchor="middle" style="fill:rgb(163, 45, 45);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">overhead</text>
+
+  <!-- legend -->
+  <rect x="100" y="418" width="12" height="12" fill="#378ADD" rx="2" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="117" y="429" font-family="system-ui,sans-serif" font-size="11" fill="#555" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Improving</text>
+
+  <rect x="188" y="418" width="12" height="12" fill="#1D9E75" rx="2" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="205" y="429" font-family="system-ui,sans-serif" font-size="11" fill="#555" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Best result</text>
+
+  <rect x="280" y="418" width="12" height="12" fill="#E24B4A" opacity="0.4" rx="2" style="fill:rgb(226, 75, 74);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <rect x="280" y="418" width="12" height="12" fill="none" stroke="#A32D2D" stroke-width="1" rx="2" style="fill:none;stroke:rgb(163, 45, 45);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="297" y="429" font-family="system-ui,sans-serif" font-size="11" fill="#555" style="fill:rgb(85, 85, 85);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Regression</text>
+
+  <text x="640" y="429" font-family="system-ui,sans-serif" font-size="10" fill="#bbb" text-anchor="end" style="fill:rgb(187, 187, 187);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:end;dominant-baseline:auto">Y axis: log scale</text>
+</svg>
