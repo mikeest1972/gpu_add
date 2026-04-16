@@ -8,7 +8,7 @@ Using this guide [link](https://developer.nvidia.com/blog/even-easier-introducti
 
 ## TLDR
 
-![CUDA benchmark](images/cuda_benchmark_svg.svg)
+![CUDA benchmark](images/benchmark.png)
 
 ## Running the CPU program
 
